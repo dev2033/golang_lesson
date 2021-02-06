@@ -9,18 +9,42 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"./datafile"
 )
 
 func main() {
-	// inputName()
-	// inputAge()
-	// randomNumberGenerator()
-	// arrayMethod()
-	// readDataFromFile()
+	// InputName()
+	// InputAge()
+	// RandomNumberGenerator()
+	// ArrayMethod()
+	// ReadDataFromFile()
+	// AverageValueOfNumbers()
 
 }
 
-func readDataFromFile() {
+func AverageValueOfNumbers() {
+	/*
+		Вызывает функцию из пакета datafile для дальнейшей
+		обработке, после эту функцию вызываем в main
+	*/
+	numbers, err := datafile.GetFloats("data2.txt")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var sum float64 = 0
+
+	for _, number := range numbers {
+		sum += number
+	}
+
+	count := float64(len(numbers))
+	fmt.Println(sum / count)
+}
+
+func ReadDataFromFile() {
 	/*Чтение данных из файла*/
 	file, err := os.Open("data.txt")
 
@@ -44,7 +68,7 @@ func readDataFromFile() {
 	}
 }
 
-func arrayMethod() {
+func ArrayMethod() {
 	/*Массивы. Цикл*/
 	notes := [7]string{
 		"do",
@@ -61,7 +85,7 @@ func arrayMethod() {
 	// }
 }
 
-func randomNumberGenerator() {
+func RandomNumberGenerator() {
 	/*
 		Генерирует случаное число, преобразование строки
 		в целочисленное число, циклы. Игра - угадай число.
@@ -115,7 +139,7 @@ func randomNumberGenerator() {
 	}
 }
 
-func inputAge() {
+func InputAge() {
 	/*Преобразование строки в число*/
 	fmt.Print("Введите ваш возраст: ")
 	reader := bufio.NewReader(os.Stdin)
@@ -144,7 +168,7 @@ func inputAge() {
 
 }
 
-func inputName() {
+func InputName() {
 	/*Прием данных от пользователя*/
 	fmt.Print("Введите имя: ")
 	reader := bufio.NewReader(os.Stdin)
