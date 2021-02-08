@@ -20,6 +20,73 @@ func main() {
 	// ArrayMethod()
 	// ReadDataFromFile()
 	// AverageValueOfNumbers()
+	// Slice()
+	// AverageValueOfNumbersSlice()
+	// Map()
+
+}
+
+func Map() {
+	/*
+		Подсчитывает сколько в файле data3 было
+		одинаковых слов(колличество написанных ЯП)
+	*/
+	lines, err := datafile.GetStrings("data3.txt")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	counts := make(map[string]int)
+
+	for _, line := range lines {
+		counts[line]++
+	}
+	fmt.Println(counts)
+}
+
+func AverageValueOfNumbersSlice() {
+	/*Подсчет среднего значения чисел при помощи сегментов*/
+	numbers, err := datafile.GetFloatsSlice("data2.txt")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var sum float64 = 0
+
+	for _, number := range numbers {
+		sum += number
+	}
+
+	count := float64(len(numbers))
+	fmt.Println(sum / count)
+}
+
+func Slice() {
+	/*Сегменты*/
+	// arrayLiters := [5]string{
+	// 	"a",
+	// 	"b",
+	// 	"c",
+	// 	"d",
+	// 	"e",
+	// }
+	// arrayLiters[0] = "Q"
+	// slice := arrayLiters[0:3] // [:2] - альтернатива
+	// slice2 := arrayLiters[2:]
+	// fmt.Println(slice)
+	// fmt.Println(slice2)
+
+	// ---------------------------------------------------
+
+	slice := []string{
+		"q",
+		"w",
+	}
+	// Добавление
+	slice = append(slice, "e")
+	fmt.Println(slice)
 
 }
 
