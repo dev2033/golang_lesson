@@ -26,6 +26,18 @@ func main() {
 
 }
 
+func Struct() {
+	/*Тип данных - Структуры*/
+	var subscriber struct {
+		name   string
+		rate   float64
+		active bool
+	}
+	subscriber.name = "Alex"
+	subscriber.rate = 11.00
+	subscriber.active = true
+}
+
 func Map() {
 	/*
 		Подсчитывает сколько в файле data3 было
