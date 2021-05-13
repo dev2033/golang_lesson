@@ -7,6 +7,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
+type product struct {
+	id      int
+	model   string
+	company string
+	price   int
+}
+
 func main() {
 
 	connStr := "user=admin password=1234 dbname=productdb sslmode=disable"
@@ -16,15 +23,24 @@ func main() {
 	}
 	defer db.Close()
 
-	result, err := db.Exec("insert into Products "+
-		"(model, company, price) "+
-		"values ('Samsung a20', $1, $2)",
-		"Samsung", 72000)
-
+	rows, err := db.Query("select * from Products")
 	if err != nil {
 		panic(err)
 	}
+	defer rows.Close()
+	products := []product{}
 
-	fmt.Println(result.LastInsertId())
-	fmt.Println(result.RowsAffected())
+	for rows.Next() {
+		p := product{}
+		err := rows.Scan(&p.id, &p.model, &p.company, &p.price)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		products = append(products, p)
+	}
+	for _, p := range products {
+		fmt.Println(p.id, p.model, p.company, p.price)
+	}
 }
+
