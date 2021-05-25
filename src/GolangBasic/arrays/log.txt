@@ -1,0 +1,10 @@
+2021/05/25 12:08:30 Micro started
+2021/05/25 12:08:30 monokai-dark is not a plugin
+2021/05/25 12:08:50 main.go main.go
+2021/05/25 14:08:51 main.go main.go
+2021/05/25 14:08:51 main.go main.go
+2021/05/25 14:09:17 main.go main.go
+2021/05/25 14:09:17 main.go main.go
+2021/05/25 14:09:50 main.go main.go
+2021/05/25 14:09:50 main.go main.go
+2021/05/25 14:10:17 main.go main.go
